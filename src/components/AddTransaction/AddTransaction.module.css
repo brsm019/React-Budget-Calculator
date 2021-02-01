@@ -1,0 +1,117 @@
+.formWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 7rem;
+}
+
+.inputIncome {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1 / 2;
+  grid-row: 1 / -1;
+  padding-left: 5rem;
+}
+
+.inputExpense {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2 / -1;
+  grid-row: 1 / -1;
+  padding-right: 5rem;
+}
+
+.inputIncome input:not([type="submit"]) {
+  width: 30vw;
+  margin-bottom: 2.5rem;
+  border: none;
+  background: transparent;
+  border-bottom: 0.2rem solid #777;
+  padding: 0.5rem 0.5rem 0.5rem 0;
+  font-family: "roboto", serif;
+  font-size: 1rem;
+  color: #eee;
+  outline: none;
+  transition: border-bottom 0.4s;
+}
+
+.inputIncome input:not([type="submit"]):focus {
+  border-bottom: 0.2rem solid #39eeb8;
+}
+
+.inputIncome input[type="submit"] {
+  width: 10rem;
+  padding: 0.7rem;
+  border: none;
+  outline: none;
+  border-radius: 0.7rem;
+  font-family: "Muli", serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  color: #eee;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  margin-top: 1rem;
+  text-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.4);
+  overflow-y: hidden;
+}
+
+.inputIncome input[type="submit"]:active {
+  transform: translateY(0.3rem);
+  overflow-y: hidden;
+}
+
+.inputIncome input[type="submit"] {
+  background-color: #39eeb8;
+  overflow-y: hidden;
+}
+
+.inputExpense input:not([type="submit"]) {
+  width: 30vw;
+  margin-bottom: 2.5rem;
+  border: none;
+  background: transparent;
+  border-bottom: 0.2rem solid #777;
+  padding: 0.5rem 0.5rem 0.5rem 0;
+  font-family: "roboto", serif;
+  font-size: 1rem;
+  color: #eee;
+  outline: none;
+  transition: border-bottom 0.4s;
+  overflow-y: hidden;
+}
+
+.inputExpense input:not([type="submit"]):focus {
+  border-bottom: 0.2rem solid #fa8d29;
+}
+
+.inputExpense input[type="submit"] {
+  width: 10rem;
+  padding: 0.7rem;
+  border: none;
+  outline: none;
+  border-radius: 0.7rem;
+  font-family: "Muli", serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  color: #eee;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  margin-top: 1rem;
+  text-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.4);
+}
+
+.inputExpense input[type="submit"]:active {
+  transform: translateY(0.3rem);
+}
+
+.inputExpense input[type="submit"] {
+  background-color: #fa8d29;
+}
+
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

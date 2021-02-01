@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.balanceIncome {
+  align-items: center;
+  padding-top: 3em;
+  padding-left: 10em;
+  height: 20vh;
+}
+
+.income {
+  font-size: 1.5vw;
+  color: #bebebe;
+  text-align: center;
+}
+
+.incomeAmount {
+  font-size: 4vw;
+  letter-spacing: 0.5vw;
+  color: #39eeb8;
+}
+
+.balanceExpenditure {
+  align-items: center;
+  padding-top: 3em;
+  padding-right: 10em;
+  height: 20vh;
+}
+
+.expenditure {
+  font-size: 1.5vw;
+  color: #bebebe;
+  text-align: center;
+}
+
+.expenditureAmount {
+  font-size: 4vw;
+  letter-spacing: 0.5vw;
+  color: #fa8d29;
+}

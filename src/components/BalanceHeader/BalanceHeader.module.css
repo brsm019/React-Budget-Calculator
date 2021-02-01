@@ -1,0 +1,13 @@
+.balanceHeaderH5 {
+  font-size: 1.5vw;
+  display: flex;
+  justify-content: center;
+  color: #bebebe;
+}
+
+.balanceHeaderH1 {
+  display: flex;
+  justify-content: center;
+  font-size: 4vw;
+  letter-spacing: 0.5vw;
+}
