@@ -1,21 +1,50 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { GlobalContext } from "../../context/GlobalState";
 import styles from "./BalanceIncome.module.css";
 
 function BalanceIncome() {
-  const { incomeTransactions, expenseTransactions } = useContext(GlobalContext);
+  const { transFersIncome, transFersExpense } = useContext(GlobalContext);
 
-  // const incomeAmounts = incomeTransactions.map(
-  //   (incomeTransaction) => incomeTransaction.incomeAmount
-  // );
+  const { state, dispatch } = transFersIncome;
+  const { state2, dispatch2 } = transFersExpense;
 
-  // const expenseAmounts = expenseTransactions.map(
-  //   (expenseTransaction) => expenseTransaction.expenseAmount
-  // );
+  useEffect(() => {
+    const fetchIncomeData = async () => {
+      const res = await fetch("http://localhost:5432/income");
+      const data = await res.json();
+      return dispatch({
+        type: "FETCH_INCOME_DATA",
+        payload: data.payload,
+      });
+    };
+    fetchIncomeData();
+  }, []);
 
-  // const totalIncome = incomeAmounts.reduce((a, b) => a + b, 0);
+  // console.log(state.incomeTransactions);
 
-  // const totalExpense = expenseAmounts.reduce((a, b) => a + b, 0);
+  const incomeAmounts = state.incomeTransactions.map(
+    (incomeTransaction) => incomeTransaction.incomeamount
+  );
+
+  const totalIncome = incomeAmounts.reduce((a, b) => a + b, 0);
+
+  useEffect(() => {
+    const fetchExpenseData = async () => {
+      const res = await fetch("http://localhost:5432/expense");
+      const data = await res.json();
+      return dispatch2({
+        type: "FETCH_EXPENSE_DATA",
+        payload: data.payload,
+      });
+    };
+    fetchExpenseData();
+  }, []);
+
+  const expenseAmounts = state2.expenseTransactions.map(
+    (expenseTransaction) => expenseTransaction.expenseamount
+  );
+
+  const totalExpense = expenseAmounts.reduce((a, b) => a + b, 0);
 
   // console.log(incomeTransactions);
 
@@ -23,11 +52,11 @@ function BalanceIncome() {
     <div className={styles.container}>
       <div className={styles.balanceIncome}>
         <h5 className={styles.income}>Income</h5>
-        <h1 className={styles.incomeAmount}>+£{/* {totalIncome} */}</h1>
+        <h1 className={styles.incomeAmount}>+£{totalIncome}</h1>
       </div>
       <div className={styles.balanceExpenditure}>
         <h5 className={styles.expenditure}>Expenditure</h5>
-        <h1 className={styles.expenditureAmount}>-£{/* {totalExpense} */}</h1>
+        <h1 className={styles.expenditureAmount}>-£{totalExpense}</h1>
       </div>
     </div>
   );

@@ -14,11 +14,11 @@ export const GlobalContextProvider = ({ children }) => {
 
   // console.log({ state });
 
-  const transFers = { state, dispatch };
-  console.log({ transFers });
+  const transFersIncome = { state, dispatch };
+  // console.log({ transFersIncome });
 
-  const transFers2 = { state2, dispatch2 };
-  console.log({ transFers2 });
+  const transFersExpense = { state2, dispatch2 };
+  // console.log({ transFersExpense });
 
   const addIncome = (incomeTransaction) => {
     dispatch({
@@ -44,8 +44,8 @@ export const GlobalContextProvider = ({ children }) => {
   return (
     <GlobalContext.Provider
       value={{
-        transFers,
-        transFers2,
+        transFersIncome,
+        transFersExpense,
         incomeTransactions: state.incomeTransactions,
         expenseTransactions: state.expenseTransactions,
         // addIncome,
