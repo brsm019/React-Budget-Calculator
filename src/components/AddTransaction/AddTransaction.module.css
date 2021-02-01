@@ -45,7 +45,7 @@
   border: none;
   outline: none;
   border-radius: 0.7rem;
-  font-family: "Muli", serif;
+  font-family: "roboto";
   font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: 0.1rem;
@@ -54,7 +54,6 @@
   cursor: pointer;
   margin-top: 1rem;
   text-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.4);
-  overflow-y: hidden;
 }
 
 .inputIncome input[type="submit"]:active {
@@ -92,7 +91,7 @@
   border: none;
   outline: none;
   border-radius: 0.7rem;
-  font-family: "Muli", serif;
+  font-family: "roboto";
   font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: 0.1rem;
@@ -114,4 +113,41 @@
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+@media only screen and (max-width: 800px) {
+  .formWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .inputIncome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 20vh;
+    margin-left: 30vw;
+    padding-left: 0rem;
+  }
+  .inputExpense {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 10vh;
+    padding-right: 0em;
+    height: 20vh;
+    margin-left: 30vw;
+    padding-bottom: 10vh;
+  }
+
+  .inputIncome input:not([type="submit"]) {
+    margin-bottom: 1rem;
+    width: 40vw;
+  }
+
+  .inputExpense input:not([type="submit"]) {
+    margin-bottom: 1rem;
+    width: 40vw;
+  }
 }

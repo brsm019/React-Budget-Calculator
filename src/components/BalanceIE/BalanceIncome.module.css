@@ -41,3 +41,36 @@
   letter-spacing: 0.5vw;
   color: #fa8d29;
 }
+
+@media only screen and (max-width: 800px) {
+  /* .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  } */
+  .balanceIncome {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 0em;
+    padding-left: 0em; */
+    padding-left: 5em;
+    height: 20vh;
+  }
+  .balanceExpenditure {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 0em;
+    padding-right: 0em; */
+    padding-right: 5em;
+    height: 20vh;
+  }
+
+  .income {
+    font-size: 3vw;
+  }
+  .expenditure {
+    font-size: 3vw;
+  }
+}

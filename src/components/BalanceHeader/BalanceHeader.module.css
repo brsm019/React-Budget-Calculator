@@ -11,3 +11,9 @@
   font-size: 4vw;
   letter-spacing: 0.5vw;
 }
+
+@media only screen and (max-width: 800px) {
+  .balanceHeaderH5 {
+    font-size: 3vw;
+  }
+}

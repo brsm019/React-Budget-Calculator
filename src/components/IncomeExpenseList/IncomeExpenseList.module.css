@@ -105,3 +105,41 @@ Expense
   cursor: pointer;
   outline: none;
 }
+
+@media only screen and (max-width: 800px) {
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .transactionsIncome {
+    margin-left: 23vw;
+    width: 50%;
+    margin-top: 0%;
+  }
+  .transactionsExpense {
+    margin-left: 23vw;
+    width: 50%;
+  }
+
+  .transaction {
+    font-size: 3vw;
+  }
+  .transaction2 {
+    font-size: 3vw;
+  }
+
+  .title {
+    padding-left: 35px;
+    font-size: 3vw;
+    color: #bebebe;
+    text-align: center;
+  }
+  .title2 {
+    padding-left: 35px;
+    font-size: 3vw;
+    color: #bebebe;
+    text-align: center;
+  }
+}
