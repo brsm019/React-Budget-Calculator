@@ -18,9 +18,8 @@ function AddTransaction() {
     //target name property of input field
     //returns a object containing both text and number
     setIncome({ ...income, [e.target.name]: e.target.value });
-
-    console.log(income);
   };
+  console.log(income);
 
   const onSubmitIncome = (e) => {
     //Avoid page reloading by default when clicking submit

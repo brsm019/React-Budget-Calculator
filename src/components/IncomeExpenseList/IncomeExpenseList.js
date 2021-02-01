@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../context/GlobalState";
+import { v4 as uuid } from "uuid";
 import styles from "./IncomeExpenseList.module.css";
 
 function IncomeExpenseList() {
@@ -40,6 +41,14 @@ function IncomeExpenseList() {
     transFersExpense.state2.expenseTransactions.length === 0 &&
       fetchExpenseData();
   });
+
+  async function deleteButtonIncome(id) {
+    let res = await fetch(`http://localhost:5432/income/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    });
+    let data = await res.json();
+  }
 
   return (
     <div className={styles.wrapper}>

@@ -48,9 +48,9 @@ export const GlobalContextProvider = ({ children }) => {
         transFersExpense,
         incomeTransactions: state.incomeTransactions,
         expenseTransactions: state.expenseTransactions,
-        // addIncome,
-        // addExpense,
-        // deleteTransaction,
+        addIncome,
+        addExpense,
+        deleteTransaction,
       }}
     >
       {children}
