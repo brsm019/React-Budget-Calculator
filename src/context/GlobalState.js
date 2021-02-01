@@ -2,22 +2,23 @@ import React, { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
 
 const initialState = {
-  incomeTransactions: [
-    { id: 1, incomeText: "Car Sell", incomeAmount: 15000 },
-    { id: 2, incomeText: "Salary", incomeAmount: 5000 },
-    { id: 3, incomeText: "Bonus", incomeAmount: 13000 },
-  ],
-  expenseTransactions: [
-    { id: 4, expenseText: "Rent", expenseAmount: 500 },
-    { id: 5, expenseText: "Clothes", expenseAmount: 1000 },
-    { id: 6, expenseText: "Equipment", expenseAmount: 500 },
-  ],
+  incomeTransactions: [],
+  expenseTransactions: [],
 };
 
-export const GlobalContext = createContext(initialState);
+export const GlobalContext = createContext();
 
 export const GlobalContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
+  const [state2, dispatch2] = useReducer(AppReducer, initialState);
+
+  // console.log({ state });
+
+  const transFers = { state, dispatch };
+  console.log({ transFers });
+
+  const transFers2 = { state2, dispatch2 };
+  console.log({ transFers2 });
 
   const addIncome = (incomeTransaction) => {
     dispatch({
@@ -43,11 +44,13 @@ export const GlobalContextProvider = ({ children }) => {
   return (
     <GlobalContext.Provider
       value={{
+        transFers,
+        transFers2,
         incomeTransactions: state.incomeTransactions,
         expenseTransactions: state.expenseTransactions,
-        addIncome,
-        addExpense,
-        deleteTransaction,
+        // addIncome,
+        // addExpense,
+        // deleteTransaction,
       }}
     >
       {children}
