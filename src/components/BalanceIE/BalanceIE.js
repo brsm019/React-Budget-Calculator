@@ -26,7 +26,7 @@ function BalanceIncome() {
     (incomeTransaction) => incomeTransaction.incomeamount
   );
 
-  const totalIncome = incomeAmounts.reduce((a, b) => a + b, 0);
+  const totalIncome = incomeAmounts.reduce((a, b) => a + b, 0).toFixed(2);
 
   useEffect(() => {
     const fetchExpenseData = async () => {
@@ -44,7 +44,7 @@ function BalanceIncome() {
     (expenseTransaction) => expenseTransaction.expenseamount
   );
 
-  const totalExpense = expenseAmounts.reduce((a, b) => a + b, 0);
+  const totalExpense = expenseAmounts.reduce((a, b) => a + b, 0).toFixed(2);
 
   // console.log(incomeTransactions);
 
