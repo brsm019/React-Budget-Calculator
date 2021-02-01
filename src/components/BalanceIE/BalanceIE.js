@@ -1,23 +1,52 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { GlobalContext } from "../../context/GlobalState";
 import styles from "./BalanceIncome.module.css";
 
 function BalanceIncome() {
-  const { incomeTransactions, expenseTransactions } = useContext(GlobalContext);
+  const { transFersIncome, transFersExpense } = useContext(GlobalContext);
 
-  const incomeAmounts = incomeTransactions.map(
-    (incomeTransaction) => incomeTransaction.incomeAmount
+  const { state, dispatch } = transFersIncome;
+  const { state2, dispatch2 } = transFersExpense;
+
+  useEffect(() => {
+    const fetchIncomeData = async () => {
+      const res = await fetch("http://localhost:5432/income");
+      const data = await res.json();
+      return dispatch({
+        type: "FETCH_INCOME_DATA",
+        payload: data.payload,
+      });
+    };
+    fetchIncomeData();
+  }, []);
+
+  // console.log(state.incomeTransactions);
+
+  const incomeAmounts = state.incomeTransactions.map(
+    (incomeTransaction) => incomeTransaction.incomeamount
   );
 
-  const expenseAmounts = expenseTransactions.map(
-    (expenseTransaction) => expenseTransaction.expenseAmount
+  const totalIncome = incomeAmounts.reduce((a, b) => a + b, 0).toFixed(2);
+
+  useEffect(() => {
+    const fetchExpenseData = async () => {
+      const res = await fetch("http://localhost:5432/expense");
+      const data = await res.json();
+      return dispatch2({
+        type: "FETCH_EXPENSE_DATA",
+        payload: data.payload,
+      });
+    };
+    fetchExpenseData();
+  }, []);
+
+  const expenseAmounts = state2.expenseTransactions.map(
+    (expenseTransaction) => expenseTransaction.expenseamount
   );
 
-  const totalIncome = incomeAmounts.reduce((a, b) => a + b, 0);
+  const totalExpense = expenseAmounts.reduce((a, b) => a + b, 0).toFixed(2);
 
-  const totalExpense = expenseAmounts.reduce((a, b) => a + b, 0);
-
-  console.log(incomeTransactions);
+  // console.log(incomeTransactions);
 
   return (
     <div className={styles.container}>

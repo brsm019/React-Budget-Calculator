@@ -1,28 +1,58 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../context/GlobalState";
 import styles from "./IncomeExpenseList.module.css";
 
 function IncomeExpenseList() {
   const {
-    incomeTransactions,
+    // incomeTransactions,
     deleteTransaction,
-    expenseTransactions,
+    // expenseTransactions,
+    transFersIncome,
+    transFersExpense,
   } = useContext(GlobalContext);
 
-  console.log(incomeTransactions);
+  const { state, dispatch } = transFersIncome;
+  const { state2, dispatch2 } = transFersExpense;
+
+  const fetchIncomeData = async () => {
+    const res = await fetch("http://localhost:5432/income");
+    const data = await res.json();
+    return dispatch({
+      type: "FETCH_INCOME_DATA",
+      payload: data.payload,
+    });
+  };
+
+  const fetchExpenseData = async () => {
+    const res = await fetch("http://localhost:5432/expense");
+    const data = await res.json();
+    return dispatch2({
+      type: "FETCH_EXPENSE_DATA",
+      payload: data.payload,
+    });
+  };
+
+  useEffect(() => {
+    transFersIncome.state.incomeTransactions.length === 0 && fetchIncomeData();
+  });
+
+  useEffect(() => {
+    transFersExpense.state2.expenseTransactions.length === 0 &&
+      fetchExpenseData();
+  });
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.transactionsIncome}>
         <h5 className={styles.title}>Transaction History</h5>
         <ul className={styles.transactionList}>
-          {incomeTransactions.map((incomeTransaction) => (
+          {transFersIncome.state.incomeTransactions.map((incomeTransaction) => (
             <li className={styles.transaction} key={incomeTransaction.id}>
               <span className={styles.transactionText}>
-                {incomeTransaction.incomeText}
+                {incomeTransaction.incometext}
               </span>
               <span className={styles.transactionAmount}>
-                {incomeTransaction.incomeAmount}
+                {incomeTransaction.incomeamount}
                 <button
                   className={styles.deleteBtn}
                   onClick={() => deleteTransaction(incomeTransaction.id)}
@@ -37,22 +67,24 @@ function IncomeExpenseList() {
       <div className={styles.transactionsExpense}>
         <h5 className={styles.title2}>Transaction History</h5>
         <ul className={styles.transactionList}>
-          {expenseTransactions.map((expenseTransaction) => (
-            <li className={styles.transaction2} key={expenseTransaction.id}>
-              <span className={styles.transactionText2}>
-                {expenseTransaction.expenseText}
-              </span>
-              <span className={styles.transactionAmount2}>
-                {expenseTransaction.expenseAmount}
-                <button
-                  className={styles.deleteBtn2}
-                  onClick={() => deleteTransaction(expenseTransaction.id)}
-                >
-                  <i className="fas fa-trash"></i>
-                </button>
-              </span>
-            </li>
-          ))}
+          {transFersExpense.state2.expenseTransactions.map(
+            (expenseTransaction) => (
+              <li className={styles.transaction2} key={expenseTransaction.id}>
+                <span className={styles.transactionText2}>
+                  {expenseTransaction.expensetext}
+                </span>
+                <span className={styles.transactionAmount2}>
+                  {expenseTransaction.expenseamount}
+                  <button
+                    className={styles.deleteBtn2}
+                    onClick={() => deleteTransaction(expenseTransaction.id)}
+                  >
+                    <i className="fas fa-trash"></i>
+                  </button>
+                </span>
+              </li>
+            )
+          )}
         </ul>
       </div>
     </div>

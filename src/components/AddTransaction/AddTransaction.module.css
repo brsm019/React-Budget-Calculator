@@ -127,7 +127,7 @@ input::-webkit-inner-spin-button {
     flex-direction: column;
     justify-content: center;
     height: 20vh;
-    margin-left: 30vw;
+    margin-left: 31vw;
     padding-left: 0rem;
   }
   .inputExpense {
@@ -137,7 +137,7 @@ input::-webkit-inner-spin-button {
     padding-top: 10vh;
     padding-right: 0em;
     height: 20vh;
-    margin-left: 30vw;
+    margin-left: 31vw;
     padding-bottom: 10vh;
   }
 
