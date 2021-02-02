@@ -7,7 +7,7 @@ Initial designs for application were created with Figma to give a clear goal of 
 
 ### Desktop View
 ![Screenshot 2021-02-02 at 17 03 28](https://user-images.githubusercontent.com/70659641/106635980-5cf5e880-6579-11eb-9e13-36e9d9b9f0eb.png)
-###Mobile View
+### Mobile View
 ![App_image](https://user-images.githubusercontent.com/70659641/106635590-f244ad00-6578-11eb-999f-169d5407fba9.png)
 
 
