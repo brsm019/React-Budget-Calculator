@@ -14,15 +14,19 @@ function IncomeExpenseList() {
 
   const { state, dispatch } = transFersIncome;
   const { state2, dispatch2 } = transFersExpense;
+  const [info, setInfo] = useState([]);
 
   const fetchIncomeData = async () => {
     const res = await fetch("http://localhost:5432/income");
     const data = await res.json();
+    setInfo(data);
     return dispatch({
       type: "FETCH_INCOME_DATA",
       payload: data.payload,
     });
   };
+
+  console.log(info);
 
   const fetchExpenseData = async () => {
     const res = await fetch("http://localhost:5432/expense");
@@ -47,8 +51,21 @@ function IncomeExpenseList() {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     });
-    let data = await res.json();
+    fetchIncomeData();
   }
+
+  async function deleteButtonExpense(id) {
+    let res = await fetch(`http://localhost:5432/expense/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    });
+    fetchExpenseData();
+  }
+
+  useEffect(() => {
+    transFersExpense.state2.expenseTransactions.length === 0 &&
+      fetchExpenseData();
+  });
 
   return (
     <div className={styles.wrapper}>
@@ -64,7 +81,7 @@ function IncomeExpenseList() {
                 {incomeTransaction.incomeamount}
                 <button
                   className={styles.deleteBtn}
-                  onClick={() => deleteTransaction(incomeTransaction.id)}
+                  onClick={() => deleteButtonIncome(incomeTransaction.id)}
                 >
                   <i className="fas fa-trash"></i>
                 </button>
@@ -86,7 +103,7 @@ function IncomeExpenseList() {
                   {expenseTransaction.expenseamount}
                   <button
                     className={styles.deleteBtn2}
-                    onClick={() => deleteTransaction(expenseTransaction.id)}
+                    onClick={() => deleteButtonExpense(expenseTransaction.id)}
                   >
                     <i className="fas fa-trash"></i>
                   </button>
