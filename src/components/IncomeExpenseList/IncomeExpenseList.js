@@ -14,19 +14,15 @@ function IncomeExpenseList() {
 
   const { state, dispatch } = transFersIncome;
   const { state2, dispatch2 } = transFersExpense;
-  const [info, setInfo] = useState([]);
 
   const fetchIncomeData = async () => {
     const res = await fetch("http://localhost:5432/income");
     const data = await res.json();
-    setInfo(data);
     return dispatch({
       type: "FETCH_INCOME_DATA",
       payload: data.payload,
     });
   };
-
-  console.log(info);
 
   const fetchExpenseData = async () => {
     const res = await fetch("http://localhost:5432/expense");
@@ -38,13 +34,12 @@ function IncomeExpenseList() {
   };
 
   useEffect(() => {
-    transFersIncome.state.incomeTransactions.length === 0 && fetchIncomeData();
-  });
+    fetchIncomeData();
+  }, []);
 
   useEffect(() => {
-    transFersExpense.state2.expenseTransactions.length === 0 &&
-      fetchExpenseData();
-  });
+    fetchExpenseData();
+  }, []);
 
   async function deleteButtonIncome(id) {
     let res = await fetch(`http://localhost:5432/income/${id}`, {
@@ -61,11 +56,6 @@ function IncomeExpenseList() {
     });
     fetchExpenseData();
   }
-
-  useEffect(() => {
-    transFersExpense.state2.expenseTransactions.length === 0 &&
-      fetchExpenseData();
-  });
 
   return (
     <div className={styles.wrapper}>
