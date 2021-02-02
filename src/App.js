@@ -10,7 +10,7 @@ import { GlobalContextProvider } from "./context/GlobalState";
 function App() {
   return (
     <GlobalContextProvider>
-      <div classname="container">
+      <div className="container">
         <div className="app-wrapper">
           <BalanceIE />
           <Header />

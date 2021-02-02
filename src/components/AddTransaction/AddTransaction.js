@@ -4,7 +4,28 @@ import { GlobalContext } from "../../context/GlobalState";
 import styles from "./AddTransaction.module.css";
 
 function AddTransaction() {
-  const { addIncome, addExpense } = useContext(GlobalContext);
+  const { transFersIncome, transFersExpense } = useContext(GlobalContext);
+
+  const { state, dispatch } = transFersIncome;
+  const { state2, dispatch2 } = transFersExpense;
+
+  const fetchIncomeData = async () => {
+    const res = await fetch("http://localhost:5432/income");
+    const data = await res.json();
+    return dispatch({
+      type: "FETCH_INCOME_DATA",
+      payload: data.payload,
+    });
+  };
+
+  const fetchExpenseData = async () => {
+    const res = await fetch("http://localhost:5432/expense");
+    const data = await res.json();
+    return dispatch2({
+      type: "FETCH_EXPENSE_DATA",
+      payload: data.payload,
+    });
+  };
 
   const [income, setIncome] = useState({
     incomeText: "",
@@ -19,27 +40,25 @@ function AddTransaction() {
     //returns a object containing both text and number
     setIncome({ ...income, [e.target.name]: e.target.value });
   };
-  console.log(income);
 
-  const onSubmitIncome = (e) => {
+  async function onSubmitIncome(e) {
     //Avoid page reloading by default when clicking submit
     e.preventDefault();
 
-    const newIncomeTransaction = {
-      id: uuidv4(),
-      incomeText,
-      //Turn income amount into number *1, type coercion
-      incomeAmount: incomeAmount * 1,
-    };
-
-    addIncome(newIncomeTransaction);
-
-    //reset inputs
+    let res = await fetch(`http://localhost:5432/income`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        incomeText: incomeText,
+        incomeAmount: incomeAmount,
+      }),
+    });
     setIncome({
       incomeText: "",
       incomeAmount: 0,
     });
-  };
+    fetchIncomeData();
+  }
 
   /* DO SAME FOR EXPENSE */
 
@@ -53,26 +72,26 @@ function AddTransaction() {
   const onChangeExpense = (e) => {
     setExpense({ ...expense, [e.target.name]: e.target.value });
 
-    console.log(expense);
+    // console.log(expense);
   };
 
-  const onSubmitExpense = (e) => {
+  async function onSubmitExpense(e) {
     e.preventDefault();
 
-    const newExpenseTransaction = {
-      id: uuidv4(),
-      expenseText,
-      expenseAmount: expenseAmount * 1,
-    };
-
-    addExpense(newExpenseTransaction);
-
-    //reset expense
+    let res = await fetch(`http://localhost:5432/expense`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        expenseText: expenseText,
+        expenseAmount: expenseAmount,
+      }),
+    });
     setExpense({
       expenseText: "",
       expenseAmount: 0,
     });
-  };
+    fetchExpenseData();
+  }
 
   return (
     <div className={styles.formWrapper}>
