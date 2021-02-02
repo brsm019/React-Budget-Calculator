@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# Currency Counter / Budget Calculator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Tech Stack
 
-## Available Scripts
+### Design
+Initial designs for application were created with Figma to give a clear goal of the aesthetics and functionality of the app.
 
-In the project directory, you can run:
+### Desktop View
+![Screenshot 2021-02-02 at 17 03 28](https://user-images.githubusercontent.com/70659641/106635980-5cf5e880-6579-11eb-9e13-36e9d9b9f0eb.png)
+###Mobile View
+![App_image](https://user-images.githubusercontent.com/70659641/106635590-f244ad00-6578-11eb-999f-169d5407fba9.png)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Frontend
+The frontend was created with the framework React, utilising hooks, more specifically useReducer and context api to pass functionality to components without prop drilling. CSS was isolated with module.css and the application has been designed with responsiveness in mind, using media queries to create the Progressive Web App. The application was deployed with Firebase and can be viewed here: [Budget-Calculator](https://budget-app-c059f.web.app/)
+### Backend
+The backend and REST API were written in Nodejs, with the database being made using PostgreSQL and the server with Express. Extensive use of Postman to test the functionality of the REST API and database before connecting to the frontend and the installation of CORS dependencies to limit CORS errors when connecting both ends. Backend was deployed to Heroku.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## How to Use
+Either navigate to the site here: [Budget-Calculator](https://budget-app-c059f.web.app/). 
 
-### `npm test`
+Alternatively.. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Clone down both the frontend and backend. With the frontend you will need to initialise the repo using `npm i` and then run using the command `npm start`.
 
-### `npm run build`
+In terms of the backend, you will have to create your own Heroku App by signing up and getting credentials to use within the database pool connection, remember to place these in a `.env` file and place this in .gitignore if you plan on pushing to GitHub.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Again, you will have to initialise the repo with `npm i` and install nodemon to automatically update.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To run the backend, run the following command in the terminal `nodemon app.js`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
