@@ -3,7 +3,7 @@
 ## Tech Stack
 
 ### Design
-Initial designs for application were created with Figma to give a clear goal of the aesthetics and functionality of the app.
+Initial designs for application were created with Figma to give a clear goal of aesthetics and functionality of the app.
 
 ### Desktop View
 ![Screenshot 2021-02-02 at 17 03 28](https://user-images.githubusercontent.com/70659641/106635980-5cf5e880-6579-11eb-9e13-36e9d9b9f0eb.png)
@@ -23,10 +23,10 @@ Alternatively..
 
 Clone down both the frontend and backend. With the frontend you will need to initialise the repo using `npm i` and then run using the command `npm start`.
 
-In terms of the backend, you will have to create your own Heroku App by signing up and getting credentials to use within the database pool connection, remember to place these in a `.env` file and place this in .gitignore if you plan on pushing to GitHub.
+In terms of the backend, you will have to create your own Heroku App by signing up and getting credentials to use within the database pool connection, remember to place these in a `.env` file and place this in a `.gitignore` file if you plan on pushing to GitHub.
 
 Again, you will have to initialise the repo with `npm i` and install nodemon to automatically update.
 
-To run the backend, run the following command in the terminal `nodemon app.js`
+Once this is complete, to run the backend, execute the following command in the terminal - `nodemon app.js`
 
 
