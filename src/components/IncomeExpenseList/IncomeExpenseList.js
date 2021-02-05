@@ -16,7 +16,7 @@ function IncomeExpenseList() {
   const { state2, dispatch2 } = transFersExpense;
 
   const fetchIncomeData = async () => {
-    const res = await fetch("http://localhost:5432/income");
+    const res = await fetch("http://localhost:5000/income");
     const data = await res.json();
     return dispatch({
       type: "FETCH_INCOME_DATA",
@@ -25,7 +25,7 @@ function IncomeExpenseList() {
   };
 
   const fetchExpenseData = async () => {
-    const res = await fetch("http://localhost:5432/expense");
+    const res = await fetch("http://localhost:5000/expense");
     const data = await res.json();
     return dispatch2({
       type: "FETCH_EXPENSE_DATA",
@@ -42,7 +42,7 @@ function IncomeExpenseList() {
   }, []);
 
   async function deleteButtonIncome(id) {
-    let res = await fetch(`http://localhost:5432/income/${id}`, {
+    let res = await fetch(`http://localhost:5000/income/${id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     });
@@ -50,7 +50,7 @@ function IncomeExpenseList() {
   }
 
   async function deleteButtonExpense(id) {
-    let res = await fetch(`http://localhost:5432/expense/${id}`, {
+    let res = await fetch(`http://localhost:5000/expense/${id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     });

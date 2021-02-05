@@ -10,7 +10,7 @@ function AddTransaction() {
   const { state2, dispatch2 } = transFersExpense;
 
   const fetchIncomeData = async () => {
-    const res = await fetch("http://localhost:5432/income");
+    const res = await fetch("http://localhost:5000/income");
     const data = await res.json();
     return dispatch({
       type: "FETCH_INCOME_DATA",
@@ -19,7 +19,7 @@ function AddTransaction() {
   };
 
   const fetchExpenseData = async () => {
-    const res = await fetch("http://localhost:5432/expense");
+    const res = await fetch("http://localhost:5000/expense");
     const data = await res.json();
     return dispatch2({
       type: "FETCH_EXPENSE_DATA",
@@ -45,7 +45,7 @@ function AddTransaction() {
     //Avoid page reloading by default when clicking submit
     e.preventDefault();
 
-    let res = await fetch(`http://localhost:5432/income`, {
+    let res = await fetch(`http://localhost:5000/income`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -78,7 +78,7 @@ function AddTransaction() {
   async function onSubmitExpense(e) {
     e.preventDefault();
 
-    let res = await fetch(`http://localhost:5432/expense`, {
+    let res = await fetch(`http://localhost:5000/expense`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
