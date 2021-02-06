@@ -1,16 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../context/GlobalState";
-import { v4 as uuid } from "uuid";
 import styles from "./IncomeExpenseList.module.css";
 
 function IncomeExpenseList() {
-  const {
-    // incomeTransactions,
-    deleteTransaction,
-    // expenseTransactions,
-    transFersIncome,
-    transFersExpense,
-  } = useContext(GlobalContext);
+  const { transFersIncome, transFersExpense } = useContext(GlobalContext);
 
   const { state, dispatch } = transFersIncome;
   const { state2, dispatch2 } = transFersExpense;
